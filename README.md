@@ -8,7 +8,7 @@ If you don't need the extra tools, just use [larazest/base]
 (https://github.com/larazest/production).
 
 - NGINX
-- PHP5 with mcyrpt and mysqlnd
+- PHP5 with mcrypt and mysqlnd
 - MySQL client and server
 - Git
 - Composer
