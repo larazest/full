@@ -5,7 +5,7 @@ Larazest/full is an image for running [Laravel]
 (https://github.com/laravel/laravel) applications, with some extra tools.
 
 If you don't need the extra tools, just use [larazest/base]
-(https://github.com/larazest/production).
+(https://github.com/larazest/base).
 
 - NGINX
 - PHP5 with mcrypt and mysqlnd
