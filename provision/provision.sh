@@ -19,10 +19,11 @@ gem install systemu --no-ri --no-rdoc
 gem install kramdown --no-ri --no-rdoc
 gem install kwalify --no-ri --no-rdoc
 
-# Nokogiri Gem (requires compilation)
+# Nokogiri Gem (requires compilation). See this ticket for why an old version is needed (at time of writing):
+# 	https://github.com/sparklemotion/nokogiri/issues/1196
 apt-get -y install build-essential
 apt-get -y install libxslt-dev libxml2-dev
-gem install nokogiri --no-ri --no-rdoc
+gem install nokogiri -v 1.6.3.1 --no-ri --no-rdoc 
 
 # ------------------------------------------------------------------------------
 # Install wkhtmltopdf (PDF generator)
@@ -40,9 +41,6 @@ cp /provision/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
 # Install test tools
 # ------------------------------------------------------------------------------
 
-# CURL (required for Codeception test tool)
-apt-get -y install curl libcurl3 libcurl3-dev php5-curl
-
 # Selenium server (not available as a Ubuntu package)
 apt-get -y install default-jre
 mkdir /usr/local/selenium
@@ -50,13 +48,13 @@ curl -o /usr/local/selenium/selenium.jar http://selenium-release.storage.googlea
 mkdir -p /var/log/selenium/
 chmod a+w /var/log/selenium/
 
-# install selenium as a (non-runit) service
-cp /provision/service/selenium.sh /etc/init.d/selenium
+# install selenium as an optional service
+cp /provision/service/selenium.conf /etc/supervisord/selenium.conf
 
 # PhantomJS headless browser (Ubuntu package is tool old)
-curl -L -o /tmp/phantomjs.tar.bz https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2
+curl -L -o /tmp/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
 mkdir /tmp/phantomjs
-tar -xjvf /tmp/phantomjs.tar.bz -C /tmp/phantomjs --strip 1
+tar xvfj /tmp/phantomjs.tar.bz2 -C /tmp/phantomjs --strip 1
 cp /tmp/phantomjs/bin/phantomjs /usr/bin/phantomjs
 chmod +x /usr/bin/phantomjs
 

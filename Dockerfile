@@ -7,7 +7,7 @@
 # see https://github.com/larazest/base
 # ------------------------------------------------------------------------------
 
-FROM larazest/base:1.0.0
+FROM larazest/base:1.1.0
 
 MAINTAINER Mark Macdonald <mark.t.macdonald@googlemail.com>
 
@@ -15,8 +15,8 @@ MAINTAINER Mark Macdonald <mark.t.macdonald@googlemail.com>
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-# Use baseimage-docker's init system
-CMD ["/sbin/my_init"]
+# Use Supervisor to run and manage all other services
+CMD ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
 # ------------------------------------------------------------------------------
 # Provision the server
