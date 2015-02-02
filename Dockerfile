@@ -7,7 +7,7 @@
 # see https://github.com/larazest/base
 # ------------------------------------------------------------------------------
 
-FROM larazest/base:1.1.0
+FROM larazest/base:1.2.0
 
 MAINTAINER Mark Macdonald <mark.t.macdonald@googlemail.com>
 
